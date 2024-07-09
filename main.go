@@ -77,11 +77,11 @@ func main() {
 
 	r.Handle("/api/users/{id}", CMW(http.HandlerFunc(reqHandler.GetUser), LoggingMiddleware, AuthMiddleware)).Methods("GET")
 	// add the new handlers
-	r.Handle("/api/organizations", CMW(http.HandlerFunc(reqHandler.CreateOrg), LoggingMiddleware, AuthMiddleware)).Methods("POST")
-	r.Handle("/api/organizations", CMW(http.HandlerFunc(reqHandler.GetOrgs), LoggingMiddleware, AuthMiddleware)).Methods("GET")
-	r.Handle("/api/organizations/{id}", CMW(http.HandlerFunc(reqHandler.GetOrg), LoggingMiddleware, AuthMiddleware)).Methods("GET")
-	r.Handle("/api/organizations/{id}/users", CMW(http.HandlerFunc(reqHandler.GetOrgUsers), LoggingMiddleware, AuthMiddleware)).Methods("GET")
-	r.Handle("/api/organizations/{id}/users", CMW(http.HandlerFunc(reqHandler.AddUserToOrg), LoggingMiddleware, AuthMiddleware)).Methods("POST")
+	r.Handle("/api/organisations", CMW(http.HandlerFunc(reqHandler.CreateOrg), LoggingMiddleware, AuthMiddleware)).Methods("POST")
+	r.Handle("/api/organisations", CMW(http.HandlerFunc(reqHandler.GetOrgs), LoggingMiddleware, AuthMiddleware)).Methods("GET")
+	r.Handle("/api/organisations/{id}", CMW(http.HandlerFunc(reqHandler.GetOrg), LoggingMiddleware, AuthMiddleware)).Methods("GET")
+	r.Handle("/api/organisations/{id}/users", CMW(http.HandlerFunc(reqHandler.GetOrgUsers), LoggingMiddleware, AuthMiddleware)).Methods("GET")
+	r.Handle("/api/organisations/{id}/users", CMW(http.HandlerFunc(reqHandler.AddUserToOrg), LoggingMiddleware, AuthMiddleware)).Methods("POST")
 
 	log.Println("Starting server on :8080")
 	log.Fatal(http.ListenAndServe(":8080", r))

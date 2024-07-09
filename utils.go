@@ -8,13 +8,13 @@ import (
 )
 
 func makeUserDefaultOrg(u *User) Org {
-	// create a default org for the user with name user firstName + "Organization" and description "Default organization for " + user firstName
+	// create a default org for the user with name user firstName + "Organisation" and description "Default organisation for " + user firstName
 	// generate unique orgId
 	orgID := uuid.New().String()
 	return Org{
 		OrgID:       orgID,
-		Name:        u.FirstName + "'s Organization",
-		Description: "Default organization for " + u.FirstName,
+		Name:        u.FirstName + "'s Organisation",
+		Description: "Default organisation for " + u.FirstName,
 	}
 }
 

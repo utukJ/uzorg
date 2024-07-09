@@ -103,13 +103,13 @@ type GetUserResponse struct {
 	Data *User `json:"data"`
 }
 
-type Organizations struct {
-	Orgs []*Org `json:"organizations"`
+type Organisations struct {
+	Orgs []*Org `json:"organisations"`
 }
 
 type GetOrgsResponse struct {
 	ResponseStatus
-	Data *Organizations `json:"data"`
+	Data *Organisations `json:"data"`
 }
 
 type CreateOrgRequest struct {

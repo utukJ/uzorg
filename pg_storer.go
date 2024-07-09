@@ -71,7 +71,7 @@ func (ups *UzorgPgStorer) InsertUser(u *User) error {
 	return err
 }
 
-// AddUserToOrg adds a user to an organization
+// AddUserToOrg adds a user to an organisation
 func (ups *UzorgPgStorer) AddUserToOrg(userID, orgID string) error {
 	_, err := ups.db.Exec(
 		"INSERT INTO org_users (user_id, org_id) VALUES ($1, $2)",
@@ -80,7 +80,7 @@ func (ups *UzorgPgStorer) AddUserToOrg(userID, orgID string) error {
 	return err
 }
 
-// GetUsersByOrgID retrieves all users belonging to a specific organization
+// GetUsersByOrgID retrieves all users belonging to a specific organisation
 func (ups *UzorgPgStorer) GetOrgUsers(orgID string) ([]*User, error) {
 	rows, err := ups.db.Query(
 		"SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.password FROM users u INNER JOIN org_users ou ON u.user_id = ou.user_id WHERE ou.org_id = $1",
@@ -133,7 +133,7 @@ func (ups *UzorgPgStorer) InsertOrg(o *Org) error {
 	return err
 }
 
-// GetUserOrgs retrieves all organizations that a user belongs to
+// GetUserOrgs retrieves all organisations that a user belongs to
 func (ups *UzorgPgStorer) GetUserOrgs(userID string) ([]*Org, error) {
 	rows, err := ups.db.Query(
 		"SELECT o.org_id, o.name, o.description FROM orgs o INNER JOIN org_users ou ON o.org_id = ou.org_id WHERE ou.user_id = $1",
@@ -168,7 +168,7 @@ func (ups *UzorgPgStorer) GetOrg(orgID string) (Org, error) {
 	return org, err
 }
 
-// check if user belongs to an organization
+// check if user belongs to an organisation
 func (ups *UzorgPgStorer) UserBelongsToOrg(userID, orgID string) (bool, error) {
 	var count int
 	err := ups.db.QueryRow(
@@ -178,7 +178,7 @@ func (ups *UzorgPgStorer) UserBelongsToOrg(userID, orgID string) (bool, error) {
 	return count > 0, err
 }
 
-// InsertOrgAndAddUser inserts an organization and adds a user to it
+// InsertOrgAndAddUser inserts an organisation and adds a user to it
 func (ups *UzorgPgStorer) InsertOrgAndAddUser(o *Org, userID string) error {
 	// Begin a transaction
 	tx, err := ups.db.Begin()

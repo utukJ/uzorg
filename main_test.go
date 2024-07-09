@@ -26,7 +26,7 @@ package main
 // }
 
 // func (uts *UzorgTestStorer) AddUserToOrg(userID string, orgID string) error {
-// 	// Implement the logic to add a user to an organization
+// 	// Implement the logic to add a user to an organisation
 // 	return nil
 // }
 
@@ -39,7 +39,7 @@ package main
 // 	return Org{}, errors.New("Org not found")
 // }
 
-// // GetUserOrgs retrieves the organizations associated with a user from the test store
+// // GetUserOrgs retrieves the organisations associated with a user from the test store
 // func (uts *UzorgTestStorer) GetUserOrgs(userID string) ([]*Org, error) {
 // 	var userOrgs []*Org
 // 	for _, org := range uts.orgs {
@@ -143,9 +143,9 @@ package main
 // 	}
 
 // 	// check org name
-// 	if store.orgs[0].Name != user.FirstName+"'s Organization" {
+// 	if store.orgs[0].Name != user.FirstName+"'s Organisation" {
 // 		t.Errorf(
-// 			"Expected org name to be %s's Organization, got %s",
+// 			"Expected org name to be %s's Organisation, got %s",
 // 			user.FirstName,
 // 			store.orgs[0].Name,
 // 		)

@@ -191,7 +191,7 @@ func (h *ReqHandler) GetUser(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// Implement handler for /api/organizations that retrieves all the orgs that a logged in user belongs to
+// Implement handler for /api/organisations that retrieves all the orgs that a logged in user belongs to
 func (h *ReqHandler) GetOrgs(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -207,9 +207,9 @@ func (h *ReqHandler) GetOrgs(w http.ResponseWriter, r *http.Request) {
 	response := GetOrgsResponse{
 		ResponseStatus: ResponseStatus{
 			Status:  SuccessStatus,
-			Message: "Organizations retrieved successfully",
+			Message: "Organisations retrieved successfully",
 		},
-		Data: &Organizations{
+		Data: &Organisations{
 			Orgs: orgs,
 		},
 	}
@@ -218,7 +218,7 @@ func (h *ReqHandler) GetOrgs(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// implement handler for /api/organizations that creates a new organization for a user
+// implement handler for /api/organisations that creates a new organisation for a user
 func (h *ReqHandler) CreateOrg(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -256,7 +256,7 @@ func (h *ReqHandler) CreateOrg(w http.ResponseWriter, r *http.Request) {
 	response := CreateOrgResponse{
 		ResponseStatus: ResponseStatus{
 			Status:  SuccessStatus,
-			Message: "Organization created successfully",
+			Message: "Organisation created successfully",
 		},
 		Data: &org,
 	}
@@ -265,7 +265,7 @@ func (h *ReqHandler) CreateOrg(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// write handler for /api/organizations/:id that retrieves an organization by id. only the user that belongs to the organization can retrieve it
+// write handler for /api/organisations/:id that retrieves an organisation by id. only the user that belongs to the organisation can retrieve it
 func (h *ReqHandler) GetOrg(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -296,7 +296,7 @@ func (h *ReqHandler) GetOrg(w http.ResponseWriter, r *http.Request) {
 	response := GetOrgResponse{
 		ResponseStatus: ResponseStatus{
 			Status:  SuccessStatus,
-			Message: "Organization retrieved successfully",
+			Message: "Organisation retrieved successfully",
 		},
 		Data: &org,
 	}
@@ -305,7 +305,7 @@ func (h *ReqHandler) GetOrg(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// write handler for /api/organizations/:id/users that retrieves all users in an organization
+// write handler for /api/organisations/:id/users that retrieves all users in an organisation
 func (h *ReqHandler) GetOrgUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -345,7 +345,7 @@ func (h *ReqHandler) GetOrgUsers(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// write handler for /api/organizations/:id/users that adds a user to an organization. only the user that belongs to the organization can add a user
+// write handler for /api/organisations/:id/users that adds a user to an organisation. only the user that belongs to the organisation can add a user
 func (h *ReqHandler) AddUserToOrg(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -399,7 +399,7 @@ func (h *ReqHandler) AddUserToOrg(w http.ResponseWriter, r *http.Request) {
 	response := AddUserToOrgResponse{
 		ResponseStatus: ResponseStatus{
 			Status:  SuccessStatus,
-			Message: "User added to organization successfully",
+			Message: "User added to organisation successfully",
 		},
 	}
 
