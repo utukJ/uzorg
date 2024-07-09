@@ -378,13 +378,7 @@ func (h *ReqHandler) AddUserToOrg(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = h.uzorgStore.AddUserToOrg(user.UserID, orgID)
-	if err != nil {
-		writeServerErrorResponse(w, fmt.Sprintf("Error adding user to org: %v", err))
-		return
-	}
-
-	// check if user belongs to org
+	// check if logged in user belongs to org
 	belongs, err := h.uzorgStore.UserBelongsToOrg(userID, orgID)
 	if err != nil {
 		writeServerErrorResponse(w, fmt.Sprintf("Error checking if user belongs to org: %v", err))
@@ -393,6 +387,24 @@ func (h *ReqHandler) AddUserToOrg(w http.ResponseWriter, r *http.Request) {
 
 	if !belongs {
 		writeBadRequestResponse(w, http.StatusUnauthorized, "Unauthorized access")
+		return
+	}
+
+	// check if user already belongs to org
+	belongs, err = h.uzorgStore.UserBelongsToOrg(req.UserID, orgID)
+	if err != nil {
+		writeServerErrorResponse(w, fmt.Sprintf("Error checking if user belongs to org: %v", err))
+		return
+	}
+
+	if belongs {
+		writeBadRequestResponse(w, http.StatusBadRequest, "User already belongs to organisation")
+		return
+	}
+
+	err = h.uzorgStore.AddUserToOrg(user.UserID, orgID)
+	if err != nil {
+		writeServerErrorResponse(w, fmt.Sprintf("Error adding user to org: %v", err))
 		return
 	}
 
