@@ -7,15 +7,15 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
 
 	connectionURL := os.Getenv("UZORG_DB_URL")
 
